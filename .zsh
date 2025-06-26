@@ -22,17 +22,12 @@ alias gl="git pull"
 alias cls="clear"
 alias ..="cd .."
 alias ...="cd ../.."
-
-# Quick open VS Code in current dir
 alias code.="code ."
 
 # -------------------------------------
 # Custom Functions
 # -------------------------------------
-# Make directory and cd into it
 mkcd() { mkdir -p "$1" && cd "$1"; }
-
-# Extract various compressed formats
 extract() {
   if [ -f "$1" ]; then
     case "$1" in
@@ -45,8 +40,6 @@ extract() {
     echo "'$1' is not a valid file"
   fi
 }
-
-# Fuzzy find in history
 alias hist="history | fzf"
 
 # -------------------------------------
@@ -59,23 +52,23 @@ export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.nvm}"
 # -------------------------------------
 # Plugin Settings
 # -------------------------------------
-# Case-insensitive tab completion
 CASE_SENSITIVE="false"
 
 # -------------------------------------
 # Developer Power Tools
 # -------------------------------------
-
-# Autosuggestions (gray text based on history)
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Syntax highlighting (colorizes commands as you type)
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Autojump for fast directory navigation
 [[ -s /opt/homebrew/etc/profile.d/autojump.sh ]] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 # -------------------------------------
 # Preferred Editor
 # -------------------------------------
 export EDITOR="nvim"
+
+# -------------------------------------
+# Neofetch on Interactive Shell
+# -------------------------------------
+if [[ $- == *i* ]]; then
+  neofetch
+fi
